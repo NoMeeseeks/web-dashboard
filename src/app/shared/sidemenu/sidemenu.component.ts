@@ -1,28 +1,30 @@
 import { Component } from '@angular/core';
-import { routes } from '../../app.routes';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { routes } from '../../app.routes';
+
 
 @Component({
-  selector: 'shared-side-menu',
+  selector: 'app-sidemenu',
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './sidemenu.component.html',
-  styles: ``
 })
 export class SidemenuComponent {
 
   public menuItems = routes
-    .map(route => route.children ?? [])
+    .map((route) => route.children ?? [])
     .flat()
-    .filter(route => route && route.path)
-    .filter(route => !route.path?.includes(':'))
+    .filter((route) => route && route.path)
+    .filter((route) => !route.path?.includes(':'));
 
   constructor() {
-    // const dashboardMenu = routes
-    //   .map(route => route.children ?? [])
+    // const dashboardRoutes = routes
+    //   .map( route => route.children ?? [] )
     //   .flat()
-    //   .filter(route => route && route.path)
-    //   .filter(route => !route.path?.includes(':'))
+    //   .filter( route => route && route.path )
+    //   .filter( route => !route.path?.includes(':') )
+    // console.log(dashboardRoutes);
   }
 }

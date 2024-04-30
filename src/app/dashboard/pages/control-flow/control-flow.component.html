@@ -1,1 +1,59 @@
-<p>control-flow works!</p>
+<h1 class="text-3xl mb-5">Control Flow</h1>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <!-- ng @if -->
+    <div class="bg-white rounded shadow p-10">
+        <h2 class="text-2xl font-bold mb-5">if: {{ showContent()}}</h2>
+
+        <button class="p-2 bg-blue-500 rounded text-white" (click)="toggleContent()">
+            Click me
+        </button>
+
+        @if (showContent()) {
+        <h1 class="mt-4">Hola dev</h1>
+        }@else {
+        <h1 class="mt-4">********</h1>
+        }
+    </div>
+    <!-- ng @swicht -->
+    <div class="bg-white rounded shadow p-10">
+
+        <h1 class="text-3xl">{{actualGrade()}}</h1>
+
+        @switch(actualGrade() ){
+        @case ('A') {
+        <h2 class="mt-4">Arriba de 90</h2>
+        }
+        @case ('B') {
+        <h2 class="mt-4">Arriba de 70</h2>
+        }
+        @default {
+        <h2 class="mt-4">Reprobado</h2>
+        }
+        }
+
+    </div>
+    <!-- ng @for -->
+    <div class="bg-white rounded shadow p-10">
+        <ul>
+            @for (item of frameworks(); track item; let i = $index,primero = $first,ultimo = $last,even =
+            $even,odd=$odd,count=$count) {
+            <li [class]="{
+                'bg-red-200':even && !primero && !ultimo,
+                'bg-green-200':odd && !primero && !ultimo,
+                'bg-blue-200':primero || ultimo
+            }">{{item}} : {{i}}/{{count}}</li>
+            }
+        </ul>
+    </div>
+
+    <!-- ng @empty -->
+    <div class="bg-white rounded shadow p-10">
+        <ul>
+            @for (item of frameworks2(); track $index) {
+            <li>{{item}}</li>
+            }@empty {
+            <p>No hay frameworks registrados</p>
+            }
+        </ul>
+    </div>
+</section>
