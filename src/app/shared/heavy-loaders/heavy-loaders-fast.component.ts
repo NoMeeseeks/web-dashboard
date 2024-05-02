@@ -6,8 +6,10 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
-<section [ngClass]="['w-full h-[600px]',cssClass]">
-  Heavy Loader fast
+<section [ngClass]="['w-full',cssClass]">
+  <ng-content >
+
+  </ng-content>
 </section>
 `
 })
