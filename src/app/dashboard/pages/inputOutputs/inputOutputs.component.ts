@@ -51,4 +51,13 @@ export default class InputOutputsComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.intervalSubscription.unsubscribe();
   }
+
+  public actualizarProducto(producto: Producto, cantidad: number) {
+    this.productos.update((productos) =>
+      productos.map((p) =>
+        p.id === producto.id ? {
+          ...p, quantity: cantidad
+        } : p)
+    );
+  }
 }
