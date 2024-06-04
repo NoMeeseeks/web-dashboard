@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Producto } from '../../../../../interfaces/producto.interfaces';
 
 @Component({
   selector: 'app-product-card',
@@ -10,4 +11,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './productCard.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductCardComponent { }
+export class ProductCardComponent {
+
+  public producto = input<Producto>();
+
+}
